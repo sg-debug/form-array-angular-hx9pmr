@@ -1,0 +1,24 @@
+<hello name="{{ name }}"></hello>
+<p>Start editing to see some magic happen :)</p>
+<div [formGroup]="orderForm">
+  <div
+    @messageState
+    formArrayName="items"
+    *ngFor="let item of orderForm.get('items').controls; let i = index"
+  >
+    <div [formGroupName]="i" @messageState>
+      <!-- <input formControlName="name" placeholder="Item name">
+    <input formControlName="description" placeholder="Item description">
+    <input formControlName="price" placeholder="Item price"> -->
+      This is a paragraph.
+    </div>
+
+    Chosen name: {{ orderForm.controls.items.controls[i].controls.name.value }}
+    <button (click)="remove(i)">Remove</button>
+  </div>
+</div>
+<button (click)="addItem()">Add</button>
+<div @messageState>
+  This element will slide up and down when the value of 'visible' changes from
+  true to false and vice versa.
+</div>
